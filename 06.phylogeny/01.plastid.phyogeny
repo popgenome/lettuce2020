@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+### software source
+## NOVOplasty: https://github.com/ndierckx/NOVOPlasty
+## Geneious: https://www.geneious.com/
+## PartitionFinder: http://www.robertlanfear.com/partitionfinder
+
+
+### Steps
+## plastid assembly by NOVOplasty
+NOVOplasty.pl -c bin/NOVOplasty.config.txt
+
+## the plastid protein coding genes were annotated and extracted by Geneious
+
+## select nucleotide substitution model by PartitionFinder
+python2.7 PartitionFinder.py partition_finder.cfg
+
+## generate single tree by raxmlHPC
+raxmlHPC -f a -x 12345 -# 500 -m GTRGAMMA -q ml_partition.txt -s NT.phy -n NT -p 12345
+
+## construct phylogenetic trees by MrBayes
+mpirun -np 8 mb -i NT.nex
