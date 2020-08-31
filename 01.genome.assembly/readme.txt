@@ -1,7 +1,3 @@
-##get gene sequence by HybPiper
-hybpiper.sh
-
-#method
 Only read pairs where both reads passed these filters were retained. 
 Recovered target sequences were assembled using HybPiper version version: 1.3.1
 Reads were mapped to de-gapped medoid sequences using blast (blast-2.2.31), 
@@ -9,7 +5,7 @@ each gene was assembled de novo using SPAdes (3.12.0), and coding sequences were
 Non-coding sequences (i.e., introns and UTRs) flanking the coding sequences were recovered using the script intronerate.py available with HybPiper.
 (article cite: A Universal Probe Set for Targeted Sequencing of 353 Nuclear Genes from Any Flowering Plant Designed Using k-Medoids Clustering)
 
-#method cite:
+## citation:
 1) HybPiper: Extracting Coding Sequence and Introns for Phylogenetics from High-Throughput Sequencing Reads Using Target Enrichment.
 2) SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing
 3) Automated generation of heuristics for biological sequence comparison
@@ -23,23 +19,23 @@ lib.cfg
 ### annotation
 ## annotation code
 annotation.sh
-##perl code used in annotation
-#nucleotide to protein
+## perl code used fpr annotation
+# nucleotide to protein
 cds2aa.pl
-#get cds sequence
+# get cds sequence
 getGene.pl
-#masked repeat sequence
+# masked repeat sequence
 repeat_maksed_to_n.pl
-#convert result to gff format
+# convert result to gff format
 RepeatMasker.repeat_to_gff.pl
 RepeatProteinMask.repeat_to_gff.pl
 TRF.repeat_to_gff.pl
-#configuration file
+# configuration file
 maker_bopts.ctl
 maker_exe.ctl
 maker_opts.ctl
 
-#Repeat prediction method. 
+## Repeat prediction method. 
 Tandem Repeats Finder (Version 4.07b,Tandem repeats fnder: a program to analyze DNA sequences) was used to search for
 tandem repeats. Both homology-based and de novo approaches were used to search for TEs. In the homology-based approach, we used
 RepeatMasker (open-4.0.6,Using RepeatMasker to identify repetitive elements in genomic sequences) and RepeatProteinMask(vision 1.36,Using RepeatMasker to identify repetitive elements in genomic sequences) 
@@ -49,7 +45,7 @@ the repeats identified by different methods were combined into the final repeat
 annotation after removing the redundant repeats.
 (article cite: The hornwort genome and early land plant evolution)
 
-#maker method
+## maker method
 To predict protein-coding genes, three approaches were
 used: (1) de novo gene prediction, (2) homology-based prediction, and (3)
 RNA-sequencing annotation. For de novo prediction, AUGUSTUS (v.3.2.3,AUGUSTUS: ab initio prediction of alternative transcripts)
