@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+### input parameters
+## sample name
+sample=$1
+## genome size
+size=$2
+
+### Steps
+## assembly by SOAPdenovo_LR
+SOAPdenovo_LR-127mer_debug sparse_pregraph -s bin/lib.cfg -d 2 -K 69  -R -o ${sample} -p 32 -z ${size}
+SOAPdenovo_LR-127mer_debug contig -g ${sample} -D 1 -R -p 32
